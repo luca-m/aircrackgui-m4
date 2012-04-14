@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/clicknrun.png</file>
+        <file>icons/button_cancel.png</file>
+        <file>icons/irkickflash.png</file>
+        <file>icons/bookmark_toolbar.png</file>
+        <file>icons/irkick.png</file>
+        <file>icons/agt_update_misc.png</file>
+        <file>icons/agt_uninstall-product.png</file>
+        <file>icons/cnrdelete-all.png</file>
+        <file>icons/documentinfo.png</file>
+        <file>icons/clean.png</file>
+        <file>icons/centre_securite.png</file>
+        <file>icons/error.png</file>
+        <file>icons/agt_update_recommended.png</file>
+        <file>icons/Padlock Locked.png</file>
+        <file>icons/encrypted.png</file>
+        <file>icons/Padlock Opened.png</file>
+        <file>icons/exit.png</file>
+        <file>icons/revert.png</file>
+        <file>icons/agt_softwareD.png</file>
+        <file>icons/player_time.png</file>
+        <file>icons/Update.png</file>
+        <file>icons/Settings.png</file>
+        <file>icons/Security Red.png</file>
+        <file>icons/Security Yellow.png</file>
+        <file>icons/Security Blue.png</file>
+        <file>icons/Add Item.png</file>
+        <file>icons/db_update.png</file>
+        <file>icons/Cible.png</file>
+        <file>icons/PacMan.png</file>
+        <file>icons/forward.png</file>
+        <file>icons/CleanUp.png</file>
+        <file>icons/Nokia-QtCreator-64.png</file>
+        <file>icons/Clipboard.png</file>
+        <file>icons/main.png</file>
+        <file>icons/donate.gif</file>
+    </qresource>
+</RCC>
