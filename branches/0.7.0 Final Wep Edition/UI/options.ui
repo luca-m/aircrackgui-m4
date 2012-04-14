@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Options</class>
+ <widget class="QWidget" name="Options">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>615</width>
+    <height>311</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Options</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="1" column="0" colspan="2">
+    <widget class="Line" name="line_5">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="pushButtonOk">
+     <property name="text">
+      <string>Ok</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../icons.qrc">
+       <normaloff>:/icons/icons/clean.png</normaloff>:/icons/icons/clean.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>General</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0" colspan="2">
+        <widget class="QSpinBox" name="spinBoxRate">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::PlusMinus</enum>
+         </property>
+         <property name="suffix">
+          <string> Packets/s</string>
+         </property>
+         <property name="prefix">
+          <string>Injection Rate: </string>
+         </property>
+         <property name="minimum">
+          <number>8</number>
+         </property>
+         <property name="maximum">
+          <number>1024</number>
+         </property>
+         <property name="value">
+          <number>512</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Aircrack</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_2">
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <item row="0" column="0" colspan="2">
+        <widget class="QSpinBox" name="spinBoxFactor">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="suffix">
+          <string/>
+         </property>
+         <property name="prefix">
+          <string>Bruteforce fudge factor: </string>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="value">
+          <number>2</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>Authentication</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_4">
+       <item row="0" column="0" colspan="2">
+        <widget class="QSpinBox" name="spinBoxAuthBurstPackets">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="suffix">
+          <string/>
+         </property>
+         <property name="prefix">
+          <string>number of packets per burst: </string>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QSpinBox" name="spinBoxAuthRetry">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="suffix">
+          <string> times</string>
+         </property>
+         <property name="prefix">
+          <string>exit after retry fake auth request </string>
+         </property>
+         <property name="maximum">
+          <number>50</number>
+         </property>
+         <property name="value">
+          <number>10</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>The more packets per burst, the more data is necessary to do auth.</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Broadcast</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_3">
+       <item row="0" column="0" colspan="2">
+        <widget class="QSpinBox" name="spinBoxBroadcastMinPack">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="prefix">
+          <string>minimum packet length: </string>
+         </property>
+         <property name="minimum">
+          <number>32</number>
+         </property>
+         <property name="maximum">
+          <number>256</number>
+         </property>
+         <property name="value">
+          <number>68</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QSpinBox" name="spinBoxBroadcastMaxPack">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="prefix">
+          <string>maximum packet length: </string>
+         </property>
+         <property name="minimum">
+          <number>32</number>
+         </property>
+         <property name="maximum">
+          <number>512</number>
+         </property>
+         <property name="value">
+          <number>128</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>The short the packet injected it is, the high injection rate you will have.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>But is more difficult to find short packets.</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>Fragmentation</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_6">
+       <item row="0" column="0" colspan="2">
+        <widget class="QSpinBox" name="spinBoxFragMinPack">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="prefix">
+          <string>minimum packet length: </string>
+         </property>
+         <property name="minimum">
+          <number>32</number>
+         </property>
+         <property name="maximum">
+          <number>256</number>
+         </property>
+         <property name="value">
+          <number>68</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QSpinBox" name="spinBoxFragMaxPack">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="prefix">
+          <string>maximum packet length: </string>
+         </property>
+         <property name="minimum">
+          <number>32</number>
+         </property>
+         <property name="maximum">
+          <number>512</number>
+         </property>
+         <property name="value">
+          <number>150</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>The short the packet injected it is, the high injection rate you will have.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>But is more difficult to find short packets.</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_6">
+      <attribute name="title">
+       <string>ChopChop</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_5">
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <item row="0" column="0" colspan="2">
+        <widget class="QSpinBox" name="spinBoxChopMinPack">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="prefix">
+          <string>minimum packet length: </string>
+         </property>
+         <property name="minimum">
+          <number>32</number>
+         </property>
+         <property name="maximum">
+          <number>256</number>
+         </property>
+         <property name="value">
+          <number>68</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QSpinBox" name="spinBoxChopMaxPack">
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="prefix">
+          <string>maximum packet length: </string>
+         </property>
+         <property name="minimum">
+          <number>32</number>
+         </property>
+         <property name="maximum">
+          <number>512</number>
+         </property>
+         <property name="value">
+          <number>128</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>The short the packet injected it is, the high injection rate you will have.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>But is more difficult to find short packets.</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>pushButtonOk</sender>
+   <signal>clicked()</signal>
+   <receiver>Options</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>455</x>
+     <y>59</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>269</x>
+     <y>40</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
