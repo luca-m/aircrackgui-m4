@@ -82,7 +82,7 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Options</string>
     </property>
-    <addaction name="actionOpen_Log"/>
+    <addaction name="actionSet_Interface"/>
     <addaction name="actionMAC_Changer"/>
     <addaction name="actionGeneral_options"/>
    </widget>
@@ -117,6 +117,16 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>exit</string>
+   </property>
+  </action>
+  <action name="actionSet_Interface">
+   <property name="icon">
+    <iconset>
+     <normalon>:/icons/icons/bookmark_toolbar.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Set_Interface</string>
    </property>
   </action>
   <action name="actionMAC_Changer">
@@ -177,16 +187,6 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>Check Updates</string>
-   </property>
-  </action>
-  <action name="actionOpen_Log">
-   <property name="icon">
-    <iconset>
-     <normalon>:/icons/icons/Clipboard.png</normalon>
-    </iconset>
-   </property>
-   <property name="text">
-    <string>Open Log (tail -f log)</string>
    </property>
   </action>
  </widget>
