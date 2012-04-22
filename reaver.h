@@ -41,6 +41,8 @@ private:
     attackReaver *attack;
     Ui::reaver *ui;
     STATUS status;
+    QString pinKey;
+    QString lastBSSID;
 
 };
 

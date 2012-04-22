@@ -87,6 +87,31 @@ void reaver::update(QString info)
     if (info.contains("[!]"))
         toThisLog(utils::htmlRojo(info));
 
+    else if (info.contains("cracked")) {
+        toThisLog(info);
+        this->setStatus(OBTAINED);
+        //storing key
+        QFile file(REAVER_FOLDER+lastBSSID+"/"+lastBSSID+".key");
+        if (!file.open(QIODevice::WriteOnly)) {
+            toThisLog(utils::htmlRojo("Impossible to store key in " + file.fileName()));
+            return;
+        }
+
+        file.write(pinKey.toLatin1());
+        toThisLog("info");
+        file.close();
+    }
+
+    else if (info.contains("WPS PIN")) {
+        pinKey.append(info+" ");
+        toThisLog(info);
+    }
+
+    else if (info.contains("WPA PSK")) {
+        pinKey.append(info+" ");
+        toThisLog(info);
+    }
+
     else if (info.contains("complete @")) {
         //taking %
         const int postIndex = info.indexOf('%');
@@ -100,7 +125,8 @@ void reaver::update(QString info)
         toThisLog(utils::htmlVerde(info));
     }
 
-    else if (info.contains("Trying") || info.contains("complete") || info.contains("saved") || info.contains("Restored"))
+    else if (info.contains("Trying") || info.contains("complete") || info.contains("saved")
+             || info.contains("Restored") || info.contains("AP SSID"))
         toThisLog(utils::htmlVerde(info));
 
     else
@@ -135,6 +161,7 @@ bool reaver::start(const QString &BSSID)
         this->ui->labelBSSID->setText("BSSID: " + BSSID);
     }
 
+    lastBSSID = BSSID;
     return ok;
 }
 
