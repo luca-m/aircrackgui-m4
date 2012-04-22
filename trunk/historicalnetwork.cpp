@@ -86,23 +86,29 @@ QString historicalNetwork::myFormatKey(const QString keyNoFormat){
        return key.remove(':').remove(' ');
     }
 
-    return "";
+    return keyNoFormat;
 }
 
 void historicalNetwork::updateWindow(){
 
     QList<QTableWidgetItem*> items = this->ui->tableWidgetWEP->selectedItems();
+    this->ui->frameKey->hide();
+    this->ui->pushButtonCrack->hide();
 
     //empty, cut.
-    if (items.size() == 0) {
-        this->ui->frameKey->hide();
-        this->ui->pushButtonCrack->hide();
+    if (items.size() == 0)
         return;
-    }
+
 
     //WPA have less values
     if (items.size()<=3) {
+        const QString key = myFormatKey(items.at(1)->text());
         this->ui->pushButtonCrack->hide();
+        if (!key.isEmpty() && !key.contains("Saved")) {
+            this->ui->lineEditKey->setText(key);
+            this->ui->frameKey->show();
+        }
+
         return;
     }
 
@@ -261,7 +267,7 @@ QStringList historicalNetwork::load() {
         if (QFile::exists(keyName)){
             QFile keyF(keyName);
             keyF.open(QIODevice::ReadOnly);
-            this->ui->tableWidgetWEP->setItem(ui->tableWidgetWEP->rowCount()-1, 4, utils::toItem(QString(keyF.readAll())));
+            this->ui->tableWidgetWEP->setItem(ui->tableWidgetWEP->rowCount()-1, 4, utils::toItem(QString(keyF.readAll()).remove("\n")));
             keyF.close();
         }
     }
