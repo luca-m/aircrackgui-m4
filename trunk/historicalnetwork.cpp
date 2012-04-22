@@ -243,7 +243,9 @@ QStringList historicalNetwork::load() {
 
     for (int i=0; i<bssidList.size(); ++i) {
         QString wpcName(bssidList.at(i)+".wpc");
+        QString keyName(bssidList.at(i)+".key");
         wpcName.remove(':').prepend(REAVER_FOLDER + bssidList.at(i) + '/').remove('\n');
+        keyName.prepend(REAVER_FOLDER + bssidList.at(i) + '/').remove('\n');
         if (QFile::exists(wpcName)) {
             this->ui->tableWidgetWEP->insertRow(ui->tableWidgetWEP->rowCount());
             this->ui->tableWidgetWEP->setItem(ui->tableWidgetWEP->rowCount()-1, 5, utils::toItem("WPA"));
@@ -253,6 +255,14 @@ QStringList historicalNetwork::load() {
             for (int j=0; j<this->ui->tableWidgetWEP->rowCount()-1; ++j)
                 if (this->ui->tableWidgetWEP->item(j,0)->text() == wpcName.split('/').at(1))
                     this->ui->tableWidgetWEP->removeRow(j);
+        }
+
+        // If there are key
+        if (QFile::exists(keyName)){
+            QFile keyF(keyName);
+            keyF.open(QIODevice::ReadOnly);
+            this->ui->tableWidgetWEP->setItem(ui->tableWidgetWEP->rowCount()-1, 4, utils::toItem(QString(keyF.readAll())));
+            keyF.close();
         }
     }
 
