@@ -318,7 +318,17 @@ QStringList utils::getListInterfaces(){
         p.readLine();
     } while (1);
 
-    const QStringList list = lIfaces.replaceInStrings(" ", "");
+    QStringList list = lIfaces.replaceInStrings(" ", "");
+    // deleting lo, ethX
+    list.removeAll("lo");
+    int size = list.size();
+    for (int i=0; i<size; ++i)
+        if (list.at(i).contains("eth")) {
+            list.removeAt(i);
+            size--;
+
+        }
+
     return list;
 }
 
