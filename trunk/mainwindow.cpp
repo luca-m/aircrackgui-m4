@@ -96,6 +96,9 @@ void MainWindow::init(){
     //connect to statusBar
     connect(this, SIGNAL(toStatusBar(QString)), this->ui->statusBar, SLOT(showMessage(QString)));
 
+    // reloading interfaces automatically
+    connect(airm, SIGNAL(listInterfacesChanged()), airodump, SLOT(reloadInterfaces()));
+
     //connect to update status of each attack in airodump
     connect(this->aireAuth, SIGNAL(statusChanged(QString)), this->airodump, SLOT(updateAuthStatus(QString)));
     connect(this->aireDeauth, SIGNAL(statusChanged(QString)), this->airodump, SLOT(updateDeauthStatus(QString)));
@@ -145,7 +148,6 @@ void MainWindow::init(){
     connect(airodump, SIGNAL(doStopAllAttacks()), this, SLOT(stopAllAttacks()));
 
     connect(this->ui->actionOpen_Log, SIGNAL(triggered()), this, SLOT(openLogs()));
-
 
     this->addLog(utils::htmlVerde("Done"));
 

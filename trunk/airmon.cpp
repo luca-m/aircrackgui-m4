@@ -114,6 +114,8 @@ void airmon::modeMonitorOn(){
     //reloading interfaces
     this->loadInterfaces();
 
+    emit listInterfacesChanged();
+
 }
 
 
@@ -161,8 +163,10 @@ void airmon::modeMonitorOff(){
     //reloading interfaces
     this->loadInterfaces();
 
+    emit listInterfacesChanged();
 
 }
+
 
 bool airmon::loadInterfaces(){
     logThread::addLog("Airmon: loading interfaces", logInfo::MAIN);

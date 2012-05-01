@@ -272,7 +272,7 @@ QString utils::htmlNegrita(QString texto){
 }
 
 QString utils::getInterfaceMonitorMode(){
-    logThread::addLog("Utils: Getting interfaces in monitor mode", logInfo::MAIN);
+    logThread::addLog("Utils: Getting interface in monitor mode", logInfo::MAIN);
 
     QStringList lIfaces = utils::getListInterfaces();
     QProcess p;
@@ -290,6 +290,36 @@ QString utils::getInterfaceMonitorMode(){
     //none
     return "";
 }
+
+
+QStringList utils::getListInterfacesMonitorMode()
+{
+    logThread::addLog("Utils: Getting interfaces in monitor mode", logInfo::MAIN);
+
+    QStringList lIfaces = getListInterfaces();
+
+    QProcess p;
+    QList<int> toDelete;
+    for (int i=0; i<lIfaces.size(); ++i) {
+        p.start("iwconfig " + lIfaces.at(i));
+        p.waitForFinished(WAIT_FOR_PROCESS);
+        if (!p.readAll().contains("Mode:Monitor"))
+            toDelete.append(i);
+    }
+
+
+    if (toDelete.size() == lIfaces.size())
+        logThread::addLog("Utils: No interfaces in monitor mode loaded", logInfo::MAIN);
+
+    QStringList ifacesMonitor;
+
+    for (int i=0; i<lIfaces.size(); ++i)
+        if (!toDelete.contains(i))
+            ifacesMonitor.append(lIfaces.at(i));
+
+    return ifacesMonitor;
+}
+
 
 QStringList utils::getListInterfaces(){
     logThread::addLog("Utils: Getting list of interfaces", logInfo::MAIN);

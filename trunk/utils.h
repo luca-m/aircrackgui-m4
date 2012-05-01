@@ -40,6 +40,7 @@ public:
     static bool validMAC (QString B){return B.count(':')==5 && B.size()==17 && !B.contains(' ');}
     static QStringList getListInterfaces();
     static QString getInterfaceMonitorMode();
+    static QStringList getListInterfacesMonitorMode();
     static bool checkRoot(){return getuid() == 0;}
     static bool programInstalled(QString program);
     static QString findIpDest(QString decryptedPacket);
