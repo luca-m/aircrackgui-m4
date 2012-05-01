@@ -62,7 +62,7 @@ Airodump::Airodump(QWidget *parent) :
     connect(this->ui->pushButtonDonate, SIGNAL(clicked()), this, SLOT(openDonate()));
     // available later
     connect(this->ui->pushButtonCaptureHandshake, SIGNAL(clicked()), this, SLOT(availableLater()));
-    connect(this->ui->pushButtonM4Auto, SIGNAL(clicked()), this, SLOT(availableLater()));
+    connect(this->ui->pushButtonM4Auto, SIGNAL(clicked()), this, SLOT(attackM4()));
 
     connect(this->ui->spinBoxInjectionRate, SIGNAL(valueChanged(int)),
             this, SIGNAL(injectionRateChanged(int)));
@@ -331,6 +331,39 @@ void Airodump::attackReaver()
     }
 
     emit doAttackReaver(infoE->getBSSID());
+}
+
+
+/*
+  DETERMINATE WICH ATTACK IS BETTER TO BE LAUNCHED
+*/
+
+void Airodump::attackM4()
+{
+    logThread::addLog("Airodump: * M4 ATTACK IN PROCESS !!!!!!", logInfo::MAIN);
+
+    infoConnectionBssid *infoC = this->getSelectedInfoConnectionBssid();
+    infoESSID *infoE = this->getSelectedInfoESSID();
+    bool isWep = this->ui->tabWidgetAttack->isVisible();
+    bool haveClientAssociated = false;
+
+    if (infoE == NULL || infoE->getBSSID().isEmpty()){
+        utils::mostrarMensaje("Please, select a BSSID in the up table");
+        return;
+    }
+
+    if (infoC == NULL || !utils::validMAC(infoC->getBSSID()))  //can be (not associated)
+        haveClientAssociated = true;
+
+    // WEP
+
+    // Case 1. Have client associated. ARP REPLAY + DEAUTH
+    if (isWep && haveClientAssociated) {
+        logThread::addLog("Airodump: * M4 ATTACK: Case 1. Have client associated. ARP REPLAY + DEAUTH", logInfo::MAIN);
+        emit doAttackArpReplay(infoE->getBSSID(), infoC->getStation());
+        emit doAttackArpReplay(infoE->getBSSID(), infoC->getStation());
+    }
+
 }
 
 
@@ -707,9 +740,11 @@ void Airodump::startMonitor(bool capture){
 
 void Airodump::restart()
 {
-    logThread::addLog("Airodump: Restarting...", logInfo::MAIN);
-    stop();
-    start();
+    if (status != STOPPED) {
+        logThread::addLog("Airodump: Restarting...", logInfo::MAIN);
+        this->ui->pushButtonStop->animateClick();
+        this->ui->pushButtonStart->animateClick();
+    }
 }
 
 
