@@ -224,6 +224,13 @@ void MainWindow::init(){
     this->updat->checkUpdates();
     this->addLog(utils::htmlVerde("Done"));
 
+    // checking if there are monitor mode in any interface. Othwerwise open airmon
+    if (utils::getInterfaceMonitorMode().isEmpty()) {
+        this->addLog(utils::htmlNegrita("No monitor interfaces detected. Enable it with airmon"));
+        QTimer::singleShot(1500, this->ui->actionAirmon_ng, SLOT(trigger()));
+        QTimer::singleShot(2000, airm, SLOT(loadInterfaces()));
+    }
+
 
     splash.showMessage(VERSION + "\n *Checking UID...", Qt::AlignBottom, Qt::white);
 
