@@ -73,6 +73,8 @@ Airodump::Airodump(QWidget *parent) :
     this->ui->pushButtonCrack->setEnabled(false);
     this->ui->pushButtonMoreInfo->setEnabled(false);
 
+    connect(this->ui->spinBoxChannel, SIGNAL(valueChanged(int)), this, SLOT(restart()));
+
     process->setProcessChannelMode(QProcess::MergedChannels);
 
 
@@ -594,10 +596,10 @@ void Airodump::newBSSIDAppear(infoESSID infoE){
 void Airodump::startMonitor(bool capture){
     //init
     QString args;
-    /*
-    if (this->ui->checkBoxFilterC->isChecked())
-        args += (QString)" -c " += QString::number(this->ui->spinBoxChannel->value());
-*/
+
+    if (!capture)
+        if (this->ui->spinBoxChannel->value() != 0)
+            args += (QString)" -c " += QString::number(this->ui->spinBoxChannel->value());
 
     if (this->ui->WEP->isVisible()) {
         logThread::addLog(QString("Airodump: Start monitoring. WEP MODE. Capture=%1").arg(capture), logInfo::MAIN);
@@ -636,6 +638,8 @@ void Airodump::startMonitor(bool capture){
             command = (AIRODUMP_COM + " -c "  + QString::number(infoE->getChannel()) + " --bssid " +
                        infoE->getBSSID() + " " + GLOBALS::INTERFACE);
         }
+
+        this->ui->spinBoxChannel->setValue(infoE->getChannel());
     }
 
     else
@@ -695,6 +699,14 @@ void Airodump::startMonitor(bool capture){
     }
 
 
+}
+
+
+void Airodump::restart()
+{
+    logThread::addLog("Airodump: Restarting...", logInfo::MAIN);
+    stop();
+    start();
 }
 
 
