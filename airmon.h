@@ -23,6 +23,7 @@ public:
 signals:
     void toLog(QString com);
     void monitorEnabled(QString interface);
+    void listInterfacesChanged();
 
 public slots:
     //load interfaces in the combobox

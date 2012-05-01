@@ -55,7 +55,6 @@ Airodump::Airodump(QWidget *parent) :
     //changes the main interface
     connect(this->ui->comboBoxInterfaces, SIGNAL(currentIndexChanged(QString)), this, SLOT(setMainInterface(QString)));
     //
-    connect(this->ui->pushButtonReload, SIGNAL(clicked()), this, SLOT(reloadInterfaces()));
     //when guy changes the attack type, stop airodump
     connect(this->ui->tabWidgetAttack, SIGNAL(currentChanged(int)), this->ui->pushButtonStop, SLOT(click()));
     connect(this->ui->tabWidgetAttack, SIGNAL(currentChanged(int)), this, SLOT(clearTables()));
@@ -65,13 +64,8 @@ Airodump::Airodump(QWidget *parent) :
     connect(this->ui->pushButtonCaptureHandshake, SIGNAL(clicked()), this, SLOT(availableLater()));
     connect(this->ui->pushButtonM4Auto, SIGNAL(clicked()), this, SLOT(availableLater()));
 
-    //load interfaces
-    this->ui->comboBoxInterfaces->addItems(utils::getListInterfaces());
-    //finding interfaces in monitor mode
-    const QString imonitor = utils::getInterfaceMonitorMode();
-    for (int i=0; i<this->ui->comboBoxInterfaces->count(); ++i)
-        if (this->ui->comboBoxInterfaces->itemText(i) == imonitor)
-            this->ui->comboBoxInterfaces->setCurrentIndex(i);
+    //load interfaces in monitor mode
+    this->ui->comboBoxInterfaces->addItems(utils::getListInterfacesMonitorMode());
 
     //disabling things
     //this->ui->groupBoxAttackOptions->setEnabled(false);
@@ -103,7 +97,7 @@ void Airodump::setMainInterface(QString interface)
 void Airodump::reloadInterfaces()
 {
     this->ui->comboBoxInterfaces->clear();
-    this->ui->comboBoxInterfaces->addItems(utils::getListInterfaces());
+    this->ui->comboBoxInterfaces->addItems(utils::getListInterfacesMonitorMode());
 }
 
 void Airodump::start(){
