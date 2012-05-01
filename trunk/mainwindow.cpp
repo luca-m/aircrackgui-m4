@@ -99,6 +99,10 @@ void MainWindow::init(){
     // reloading interfaces automatically
     connect(airm, SIGNAL(listInterfacesChanged()), airodump, SLOT(reloadInterfaces()));
 
+    // change inject rate from airodump
+    connect(this->airodump, SIGNAL(injectionRateChanged(int)),
+            this->options, SLOT(setinjectionRate(int)));
+
     //connect to update status of each attack in airodump
     connect(this->aireAuth, SIGNAL(statusChanged(QString)), this->airodump, SLOT(updateAuthStatus(QString)));
     connect(this->aireDeauth, SIGNAL(statusChanged(QString)), this->airodump, SLOT(updateDeauthStatus(QString)));

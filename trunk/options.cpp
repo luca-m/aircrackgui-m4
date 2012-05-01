@@ -10,6 +10,9 @@ Options::Options(QWidget *parent) :
     ui->setupUi(this);
 
     connect(this->ui->pushButtonOk, SIGNAL(clicked()), this, SLOT(applyOptions()));
+
+    // injection rate from airodump
+    this->ui->spinBoxRate->hide();
 }
 
 Options::~Options()
@@ -17,6 +20,14 @@ Options::~Options()
     logThread::addLog("Destructor of options GUI", logInfo::MAIN);
     delete ui;
 }
+
+
+void Options::setinjectionRate(const int rate)
+{
+    this->ui->spinBoxRate->setValue(rate);
+    applyOptions();
+}
+
 
 void Options::applyOptions(){
     GLOBALS::SEND_RATE = this->ui->spinBoxRate->value();
@@ -29,6 +40,8 @@ void Options::applyOptions(){
     GLOBALS::CHOP_MIN_PACKET = this->ui->spinBoxChopMinPack->value();
     GLOBALS::FRAG_MAX_PACKET = this->ui->spinBoxFragMaxPack->value();
     GLOBALS::FRAG_MIN_PACKET = this->ui->spinBoxFragMinPack->value();
+
+    emit optionsChanged();
 
     logThread::addLog("Options: Applied", logInfo::MAIN);
 

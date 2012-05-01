@@ -64,6 +64,9 @@ Airodump::Airodump(QWidget *parent) :
     connect(this->ui->pushButtonCaptureHandshake, SIGNAL(clicked()), this, SLOT(availableLater()));
     connect(this->ui->pushButtonM4Auto, SIGNAL(clicked()), this, SLOT(availableLater()));
 
+    connect(this->ui->spinBoxInjectionRate, SIGNAL(valueChanged(int)),
+            this, SIGNAL(injectionRateChanged(int)));
+
     //load interfaces in monitor mode
     this->ui->comboBoxInterfaces->addItems(utils::getListInterfacesMonitorMode());
 
