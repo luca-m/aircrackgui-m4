@@ -138,6 +138,7 @@ private slots:
     void showMoreInfo();
     void reloadInterfaces();
     void availableLater();
+    void restart();
 
 private:
     //clear vectors of infoESSIDV and infoConnectionBssidV

@@ -42,6 +42,9 @@
           <pointsize>8</pointsize>
          </font>
         </property>
+        <property name="statusTip">
+         <string>Status of all attacks. REAL TIME.</string>
+        </property>
         <property name="title">
          <string>Attacks Status</string>
         </property>
@@ -530,6 +533,12 @@ this airodump instance</string>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="toolTip">
+         <string>Start airodump-ng</string>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
         <property name="title">
          <string>Execution</string>
         </property>
@@ -737,6 +746,9 @@ this airodump instance</string>
             <layout class="QGridLayout" name="gridLayout_6">
              <item row="0" column="4">
               <widget class="QPushButton" name="pushButtonBroadcast">
+               <property name="toolTip">
+                <string>Capture a valid packet and change destination IP to Broadcast to reinject</string>
+               </property>
                <property name="text">
                 <string>Broadcast</string>
                </property>
@@ -750,6 +762,9 @@ this airodump instance</string>
               <widget class="QPushButton" name="pushButtonChop">
                <property name="enabled">
                 <bool>true</bool>
+               </property>
+               <property name="toolTip">
+                <string>Try to do ChopChop attack to selected BSSID with selected MAC</string>
                </property>
                <property name="text">
                 <string>ChopChop</string>
@@ -765,6 +780,9 @@ this airodump instance</string>
                <property name="enabled">
                 <bool>true</bool>
                </property>
+               <property name="toolTip">
+                <string>Try to do fragmentation attack to selected BSSID with selected MAC</string>
+               </property>
                <property name="text">
                 <string>Fragmentation</string>
                </property>
@@ -776,6 +794,9 @@ this airodump instance</string>
              </item>
              <item row="1" column="4">
               <widget class="QPushButton" name="pushButtonAllAttacks">
+               <property name="toolTip">
+                <string>Broadcast + ARPReplay + ChopChop + Fragmentation</string>
+               </property>
                <property name="text">
                 <string>ALL ATTACKS!</string>
                </property>
@@ -790,6 +811,9 @@ this airodump instance</string>
                <property name="enabled">
                 <bool>true</bool>
                </property>
+               <property name="toolTip">
+                <string>Select an ARP packet valid and reinject to AP</string>
+               </property>
                <property name="text">
                 <string>Interactive [ARP]</string>
                </property>
@@ -801,6 +825,9 @@ this airodump instance</string>
              </item>
              <item row="1" column="0">
               <widget class="QPushButton" name="pushButtonARP">
+               <property name="toolTip">
+                <string>BEST ATTACK: Try to do ARP replay attack to selected BSSID with selected MAC</string>
+               </property>
                <property name="text">
                 <string>ARP Replay</string>
                </property>
@@ -812,6 +839,9 @@ this airodump instance</string>
              </item>
              <item row="0" column="1">
               <widget class="QPushButton" name="pushButtonAuth">
+               <property name="toolTip">
+                <string>Try to authtenticate to an AP</string>
+               </property>
                <property name="text">
                 <string>Authentication</string>
                </property>
@@ -823,6 +853,9 @@ this airodump instance</string>
              </item>
              <item row="0" column="0">
               <widget class="QPushButton" name="pushButtonDeauth">
+               <property name="toolTip">
+                <string>Try to deauthenticate a determinate client (or all) associated to AP</string>
+               </property>
                <property name="text">
                 <string>Deauthentication</string>
                </property>
@@ -850,6 +883,9 @@ this airodump instance</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="toolTip">
+                <string>Try to do Reaver attack to selected BSSID. AIRODUMP WILL STOP IT</string>
+               </property>
                <property name="text">
                 <string>Reaver</string>
                </property>
@@ -869,6 +905,9 @@ this airodump instance</string>
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="toolTip">
+                <string>Capture handshake of selected BSSID</string>
                </property>
                <property name="text">
                 <string>Capture Handshake</string>
@@ -906,6 +945,12 @@ this airodump instance</string>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="toolTip">
+            <string>Capturing selected BSSID of main table.</string>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
            <property name="text">
             <string>Capture</string>
            </property>
@@ -923,6 +968,12 @@ this airodump instance</string>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="toolTip">
+            <string>Launch aircrack-ng to try to crack selected BSSID</string>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
            <property name="text">
             <string>Crack!</string>
            </property>
@@ -934,6 +985,12 @@ this airodump instance</string>
          </item>
          <item row="2" column="0">
           <widget class="QPushButton" name="pushButtonMoreInfo">
+           <property name="toolTip">
+            <string>More info about BSSID</string>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
            <property name="text">
             <string>More Info</string>
            </property>
@@ -945,6 +1002,12 @@ this airodump instance</string>
          </item>
          <item row="2" column="1">
           <widget class="QPushButton" name="pushButtonStopAll">
+           <property name="toolTip">
+            <string>Stop all attacks are running</string>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
            <property name="text">
             <string>Stop All Attacks</string>
            </property>
@@ -956,6 +1019,15 @@ this airodump instance</string>
          </item>
          <item row="2" column="2">
           <widget class="QPushButton" name="pushButtonM4Auto">
+           <property name="toolTip">
+            <string>EXPERIMENTAL: Just push the button, and
+ an internal algorithm try to find
+best way to crack AP.
+TO STOP IT, PUSH Stop All Attacks button</string>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
            <property name="text">
             <string>M4 AUTOMATIC</string>
            </property>
@@ -972,6 +1044,12 @@ this airodump instance</string>
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Make a little contribution :)</string>
+           </property>
+           <property name="statusTip">
+            <string/>
            </property>
            <property name="text">
             <string/>
@@ -1011,6 +1089,12 @@ this airodump instance</string>
         <layout class="QGridLayout" name="gridLayout_5">
          <item row="0" column="0">
           <widget class="QPushButton" name="pushButtonSort">
+           <property name="toolTip">
+            <string>Sort main table by filter</string>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
            <property name="text">
             <string>Sort by</string>
            </property>
@@ -1022,6 +1106,12 @@ this airodump instance</string>
          </item>
          <item row="1" column="0">
           <widget class="QComboBox" name="comboBoxSort">
+           <property name="toolTip">
+            <string>Filter of main table to sort</string>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
            <property name="sizeAdjustPolicy">
             <enum>QComboBox::AdjustToContents</enum>
            </property>
