@@ -12,6 +12,7 @@ Airodump::Airodump(QWidget *parent) :
 
     ui->setupUi(this);
     process = new QProcess(this);
+    this->status = STOPPED;
     //initializing
     //this->ui->pushButtonStop->hide();
     //connecting buttons
