@@ -20,6 +20,9 @@ public:
 signals:
     void optionsChanged(); //useful in future
 
+public slots:
+    void setinjectionRate(const int rate);
+
 private slots:
     void applyOptions();
 

@@ -75,6 +75,7 @@ signals:
      void doStopAllAttacks();
      //
      void statusInform(QString msg);
+     void injectionRateChanged(const int rate);
 
 public slots:
      //clear the tables

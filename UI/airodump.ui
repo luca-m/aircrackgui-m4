@@ -464,17 +464,40 @@
              </widget>
             </item>
             <item row="1" column="0">
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>Handshake (WPA)</string>
               </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>24</height>
-               </size>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="lineEditStatusHandshacke">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
               </property>
-             </spacer>
+              <property name="font">
+               <font>
+                <pointsize>8</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(255, 0, 0);</string>
+              </property>
+              <property name="text">
+               <string>STOPPED</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -508,6 +531,9 @@ this airodump instance</string>
          </item>
          <item row="2" column="0">
           <widget class="QSpinBox" name="spinBoxChannel">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="toolTip">
             <string>Channel 0 = All channels</string>
            </property>
@@ -572,136 +598,6 @@ this airodump instance</string>
        </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QTableWidget" name="tableWidgetAirodumpGeneral">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>150</number>
-     </attribute>
-     <attribute name="horizontalHeaderStretchLastSection">
-      <bool>true</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>BSSID</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>ESSID</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>POWER</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>BEACONS</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>DATA/S</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>CURRENT IVS</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>STORED IVS</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>CHANNEL</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>ENCRYPTION</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QTableWidget" name="tableWidgetAirodumpAux">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>130</number>
-     </attribute>
-     <attribute name="horizontalHeaderStretchLastSection">
-      <bool>true</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>BSSID</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>STATION</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>POWER</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>RATE</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>LOST</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>PACKETS</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>PROBES</string>
-      </property>
-     </column>
     </widget>
    </item>
    <item row="1" column="0">
@@ -875,6 +771,9 @@ this airodump instance</string>
              <string>WPA</string>
             </attribute>
             <layout class="QFormLayout" name="formLayout">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+             </property>
              <item row="0" column="0">
               <widget class="QPushButton" name="pushButtonReaver">
                <property name="enabled">
@@ -1024,7 +923,7 @@ this airodump instance</string>
           <widget class="QPushButton" name="pushButtonM4Auto">
            <property name="toolTip">
             <string>EXPERIMENTAL: Just push the button, and
- an internal algorithm try to find
+an internal algorithm try to find
 best way to crack AP.
 TO STOP IT, PUSH Stop All Attacks button</string>
            </property>
@@ -1081,7 +980,7 @@ TO STOP IT, PUSH Stop All Attacks button</string>
       <item row="1" column="1">
        <widget class="QGroupBox" name="groupBox_2">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1149,10 +1048,182 @@ TO STOP IT, PUSH Stop All Attacks button</string>
            </item>
           </widget>
          </item>
+         <item row="4" column="0">
+          <widget class="QSpinBox" name="spinBoxInjectionRate">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="toolTip">
+            <string>Injection rate to do next attack</string>
+           </property>
+           <property name="suffix">
+            <string> pack/s</string>
+           </property>
+           <property name="prefix">
+            <string>Inject </string>
+           </property>
+           <property name="minimum">
+            <number>8</number>
+           </property>
+           <property name="maximum">
+            <number>1024</number>
+           </property>
+           <property name="singleStep">
+            <number>32</number>
+           </property>
+           <property name="value">
+            <number>256</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QTableWidget" name="tableWidgetAirodumpGeneral">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>150</number>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>BSSID</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ESSID</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>POWER</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>BEACONS</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>DATA/S</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>CURRENT IVS</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>STORED IVS</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>CHANNEL</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ENCRYPTION</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QTableWidget" name="tableWidgetAirodumpAux">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>130</number>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>BSSID</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>STATION</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>POWER</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>RATE</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>LOST</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>PACKETS</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>PROBES</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>
