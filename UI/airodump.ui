@@ -42,8 +42,11 @@
           <pointsize>8</pointsize>
          </font>
         </property>
-        <property name="statusTip">
+        <property name="toolTip">
          <string>Status of all attacks. REAL TIME.</string>
+        </property>
+        <property name="statusTip">
+         <string/>
         </property>
         <property name="title">
          <string>Attacks Status</string>
