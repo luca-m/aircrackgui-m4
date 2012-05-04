@@ -353,8 +353,9 @@ void Airodump::attackM4()
         return;
     }
 
-    if (infoC == NULL || !utils::validMAC(infoC->getBSSID()))  //can be (not associated)
-        haveClientAssociated = true;
+    if (infoC != NULL)
+        if (utils::validMAC(infoC->getBSSID()))  //can be (not associated)
+            haveClientAssociated = true;
 
     // WEP
 
@@ -362,8 +363,10 @@ void Airodump::attackM4()
     if (isWep && haveClientAssociated) {
         logThread::addLog("Airodump: * M4 ATTACK: Case 1. Have client associated. ARP REPLAY + DEAUTH", logInfo::MAIN);
         emit doAttackArpReplay(infoE->getBSSID(), infoC->getStation());
-        emit doAttackArpReplay(infoE->getBSSID(), infoC->getStation());
+        emit doAttackDeauth(infoE->getBSSID(), infoC->getStation());
     }
+
+    // Case X....
 
 }
 
@@ -743,8 +746,8 @@ void Airodump::restart()
 {
     if (status != STOPPED) {
         logThread::addLog("Airodump: Restarting...", logInfo::MAIN);
-        this->ui->pushButtonStop->animateClick();
-        this->ui->pushButtonStart->animateClick();
+        stop();
+        start();
     }
 }
 

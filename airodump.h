@@ -109,6 +109,8 @@ public slots:
     void attackChopChop();
     //receive the order to do reaver attack
     void attackReaver();
+    //receive the order to do m4 attack
+    void attackM4();
     //receive de order to do all attacks
     void allAttacks();
     //receive the order to stop all
