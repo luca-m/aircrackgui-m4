@@ -57,12 +57,18 @@ void historicalNetwork::exportKeys(){
     }
 
     f.write("****************\n");
-    f.write("ESSID\nKEY\n");
+    f.write("ESSID or BSSID\nKEY\n");
     f.write("****************\n");
 
     for (int i=0; i<this->ui->tableWidgetWEP->rowCount(); ++i)
         if (!this->ui->tableWidgetWEP->item(i, 4)->text().isEmpty()) {
-            f.write(this->ui->tableWidgetWEP->item(i, 1)->text().toLatin1() + "\n");
+            if (this->ui->tableWidgetWEP->item(i, 4)->text().contains("Session Saved"))
+                continue;
+            // if we dont have essid
+            if (!this->ui->tableWidgetWEP->item(i, 1))
+                f.write(this->ui->tableWidgetWEP->item(i, 0)->text().toLatin1() + "\n");
+            else
+                f.write(this->ui->tableWidgetWEP->item(i, 1)->text().toLatin1() + "\n");
             f.write(this->myFormatKey(this->ui->tableWidgetWEP->item(i, 4)->text()).toLatin1() + "\n");
             f.write("****************\n");
         }
