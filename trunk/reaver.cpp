@@ -169,9 +169,9 @@ bool reaver::stop()
 {
     logThread::addLog("Reaver: Stopping sending signal CTRL-C", logInfo::MAIN);
 
-    // to save session sending CTRL-C
-    attack->sendSignalToProcess(2);
     if (attack->isRunning()) {
+        // to save session sending CTRL-C
+        attack->sendSignalToProcess(2);
         sleep(1);
         attack->stop();
         toThisLog("Process stopped");
